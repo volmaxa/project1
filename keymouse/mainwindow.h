@@ -23,6 +23,7 @@ private:
     QVector<QMyButton *> modKeys;
 public slots:
     void sendKey(unsigned int keycode, bool press, bool release);
+    void doMouseLeftClick();
     void mouseClick(int button);
 };
 

@@ -28,6 +28,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
+#include <QtNetwork/QNetworkRequest>
+
 Display *display;
 unsigned int keycode;
 
@@ -38,15 +40,18 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+    ui->webView->load(QNetworkRequest(QUrl("http://m.facebook.com")));
+    connect(ui->webView,SIGNAL(loadFinished(bool)),this,SLOT(doMouseLeftClick()));
+    connect(ui->webView,SIGNAL(loadFinished(bool)),this,SLOT(doMouseLeftClick()));
+}
+
+void MainWindow::doMouseLeftClick(){
     Display *display = XOpenDisplay(0);
     Window root = DefaultRootWindow(display);
-
-    XWarpPointer(display, None, root, 0, 0, 0, 0, 40,40);
-
+    XWarpPointer(display, None, root, 0, 0, 0, 0, 850,550);
     mouseClick(Button1);
     XFlush(display);
-
-
     XCloseDisplay(display);
 }
 

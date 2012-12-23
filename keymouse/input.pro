@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui X11
+QT       += core gui X11 webkit
 
 TARGET = input
 TEMPLATE = app
